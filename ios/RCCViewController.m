@@ -235,8 +235,12 @@ const NSInteger TRANSPARENT_NAVBAR_TAG = 78264803;
 
 - (void)sendGlobalScreenEvent:(NSString *)eventName endTimestampString:(NSString *)endTimestampStr shouldReset:(BOOL)shouldReset {
   
-  if (!self.commandType) return;
   
+  // Disable this line to fix https://github.com/wix/react-native-navigation/issues/1771
+  // This is a temporary hack until a real fix is deployed or React Native navigationController
+  // v2 is viable.
+  // if (!self.commandType) return;
+
   if ([self.view isKindOfClass:[RCTRootView class]]){
     NSString *screenName = [((RCTRootView*)self.view) moduleName];
     
